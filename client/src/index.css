@@ -47,6 +47,7 @@ main {
 }
 .form {
 	background-color: white;
+	border-radius: 10px;
 }
 footer {
 	background-color: #1e3250;

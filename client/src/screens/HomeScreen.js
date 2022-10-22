@@ -19,7 +19,7 @@ const HomeScreen = () => {
     }, [dispatch])
     return (
         <>
-            <h1>Guides</h1>
+            <h3>Guides</h3>
             {loading ? <Loader /> : error ? <Message variant='danger'>Error Fetching Guides from server</Message> :
                 <Row>
                     {products.map((product) => {

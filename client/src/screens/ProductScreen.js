@@ -35,7 +35,7 @@ const ProductScreen = () => {
                 <Col md={3}>
                     <ListGroup className='shadow-sm p-3 mb-5 bg-white rounded' variant='flush'>
                         <ListGroup.Item>
-                            <h3>{product.name}</h3>
+                            <h5 className='text-center'>{product.name}</h5>
                         </ListGroup.Item>
                         <ListGroup.Item>
                             <Rating value={product.ratings} text={`${product.numReviews} reviews`} />

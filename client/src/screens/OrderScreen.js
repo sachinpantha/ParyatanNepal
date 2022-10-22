@@ -14,7 +14,6 @@ const OrderScreen = () => {
     const dispatch = useDispatch()
     const orderDetails = useSelector((state) => state.orderDetails)
     const { order, loading, error } = orderDetails
-    const connect = useSelector((state) => state.connect)
     const orderPay = useSelector((state) => state.orderPay)
     const { loading: loadingPay, success: successPay } = orderPay
     if (!loading) {
@@ -50,7 +49,6 @@ const OrderScreen = () => {
         }
     }, [dispatch, orderId, successPay, order])
     const successPaymentHandler = (paymentResult) => {
-        console.log(paymentResult)
         dispatch(payOrder(orderId, paymentResult))
     }
     return loading ? (<Loader />) : error ? (<Message variant='danger'>{error}</Message>) : (<>
@@ -58,18 +56,13 @@ const OrderScreen = () => {
             <Col md={8}>
                 <ListGroup variant='flush' className='shadow-sm p-3 bg-white rounded border-0'>
                     <ListGroup.Item>
-                        <h2>Shipping</h2>
-                        <strong>Name:</strong>{order.user.name}<br />
-                        Email:<a href={`mailto: ${order.user.email}`}>{order.user.email}</a>
-                        <p>
-                            <strong>Details::</strong>
-                            {connect.shippingAddress.name}, {connect.shippingAddress.address},{connect.shippingAddress.city}
-                            ,{connect.shippingAddress.number}, {connect.shippingAddress.email}
-                        </p>
+                        <h5 style={{ "color": "#D9534F" }}>User Details</h5>
+                        <span style={{ "fontWeight": "bold" }}>USERNAME:</span>{order.user.name}<br />
+                        <span style={{ "fontWeight": "bold" }}>EMAIL:</span><a href={`mailto: ${order.user.email}`}>{order.user.email}</a><br /><br />
                         {order.isConnected ? <Message variant='success'>Connected on {order.reachedAt}</Message> : <Message variant='danger'>The guide has not Connected to tourist yet</Message>}
                     </ListGroup.Item>
                     <ListGroup.Item>
-                        <h2>Payment Method</h2>
+                        <h5 style={{ "color": "#D9534F" }}>Payment Method</h5>
                         <p>
                             <strong>Method:</strong>
                             {order.paymentMethod}
@@ -77,7 +70,7 @@ const OrderScreen = () => {
                         {order.isPaid ? <Message variant='success'>Paid on {order.paidAt}</Message> : <Message variant='danger'>Payment is not being received yet</Message>}
                     </ListGroup.Item>
                     <ListGroup.Item>
-                        <h2>Connected Guides</h2>
+                        <h5 style={{ "color": "#D9534F" }}>Connected Guides</h5>
                         {order.connectItems.length === 0 ? (<Message>Order is empty</Message>) : (
                             <ListGroup variant='flush'>
                                 {

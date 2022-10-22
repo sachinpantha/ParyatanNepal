@@ -29,7 +29,7 @@ const ConnectScreen = () => {
     return (
         <Row>
             <Col md={8} >
-                <h1>Connection Wishlist</h1>
+                <h4 >Connection Wishlist</h4>
                 {connectItems.length === 0 ? <Message>
                     Your Connection wishlist is empty <Link to='/'>Go Back</Link>
                 </Message> : (
@@ -59,11 +59,11 @@ const ConnectScreen = () => {
 
             </Col>
             <Col md={4}>
-                <Card>
+                <Card className='shadow-sm p-3 mb-5 bg-white rounded border-0'>
                     <ListGroup variant='flush'>
                         <ListGroup.Item>
 
-                            <h2>Subtotal({connectItems.length} Connection{connectItems.length > 1 ? 's' : ''})</h2>
+                            <h5 className='text-center'>Subtotal({connectItems.length} Connection{connectItems.length > 1 ? 's' : ''})</h5>
                             {/* ${connectItems.reduce((acc,item)=>acc+ item.fees,0).toFixed(2)} */}
                             {/* ${connectItems.reduce((item)=> item.fees)} */}
                         </ListGroup.Item>
