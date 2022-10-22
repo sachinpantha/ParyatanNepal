@@ -24,7 +24,7 @@ const ShippingScreen = () => {
         <div>
             <FormContainer>
                 <CheckoutSteps step1 step2 />
-                <h2 style={{ "color": "#251B37" }} className='text-center'>Enter your details</h2>
+                <h2 style={{ "color": "#D9534F" }} className='text-center'>Enter your details</h2>
                 <Form onSubmit={submitHandler}>
                     <Form.Group controlId='name' className='address'>
                         <Form.Label>Name</Form.Label>

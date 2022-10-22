@@ -41,7 +41,7 @@ const PlaceOrderScreen = () => {
             <CheckoutSteps step1 step2 step3 step4 />
             <Row>
                 <Col md={8}>
-                    <ListGroup variant='flush'>
+                    <ListGroup variant='flush' className='shadow-sm p-3 mb-5 bg-white rounded border-0'>
                         <ListGroup.Item>
                             <h5 style={{ color: '#D9534F' }}>Your Details</h5>
                             <p>
@@ -67,7 +67,7 @@ const PlaceOrderScreen = () => {
                                                 <Row>
                                                     <Col md={1}><Image src={item.image} alt={item.name} fluid rounded></Image></Col>
                                                     <Col><Link to={`/product/${item.guideId}`}>{item.name}</Link> </Col>
-                                                    <Col md={4}>{item.time}</Col>
+                                                    <Col style={{ "color": "#40A262" }} md={4}>{item.time}</Col>
                                                 </Row>
                                             </ListGroup.Item>
                                         })
@@ -78,7 +78,7 @@ const PlaceOrderScreen = () => {
                     </ListGroup>
                 </Col>
                 <Col md={4}>
-                    <Card>
+                    <Card className='shadow-sm p-3 bg-white rounded border-0'>
                         <ListGroup variant='flush'>
                             <ListGroup.Item>
                                 <h5 className='text-center' style={{ color: '#D9534F' }}>Connection Summary</h5>

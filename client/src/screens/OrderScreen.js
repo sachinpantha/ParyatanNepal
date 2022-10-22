@@ -56,7 +56,7 @@ const OrderScreen = () => {
     return loading ? (<Loader />) : error ? (<Message variant='danger'>{error}</Message>) : (<>
         <Row>
             <Col md={8}>
-                <ListGroup variant='flush'>
+                <ListGroup variant='flush' className='shadow-sm p-3 bg-white rounded border-0'>
                     <ListGroup.Item>
                         <h2>Shipping</h2>
                         <strong>Name:</strong>{order.user.name}<br />
@@ -97,27 +97,27 @@ const OrderScreen = () => {
                 </ListGroup>
             </Col>
             <Col md={4}>
-                <Card>
+                <Card className='shadow-sm p-3 bg-white rounded border-0'>
                     <ListGroup variant='flush'>
                         <ListGroup.Item>
-                            <h2 style={{ color: 'red' }}>Connection </h2>
+                            <h2 className='text-center' style={{ color: 'red' }}>Connection </h2>
                         </ListGroup.Item>
                         <ListGroup.Item>
                             <Row>
                                 <Col >Connections</Col>
-                                <Col>${order.itemsPrice}</Col>
+                                <Col style={{ "color": "#40A262" }}>${order.itemsPrice}</Col>
                             </Row>
                         </ListGroup.Item>
                         <ListGroup.Item>
                             <Row>
                                 <Col>Tourism Taxes</Col>
-                                <Col>${order.taxPrice}</Col>
+                                <Col style={{ "color": "#40A262" }}>${order.taxPrice}</Col>
                             </Row>
                         </ListGroup.Item>
                         <ListGroup.Item>
                             <Row>
                                 <Col>Total</Col>
-                                <Col>${order.totalPrice}</Col>
+                                <Col style={{ "color": "#40A262" }}>${order.totalPrice}</Col>
                             </Row>
                         </ListGroup.Item>
                         {!order.isPaid && (

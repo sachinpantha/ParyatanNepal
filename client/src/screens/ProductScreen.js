@@ -49,8 +49,8 @@ const ProductScreen = () => {
                     </ListGroup>
                 </Col>
                 <Col md={3}>
-                    <Card>
-                        <ListGroup variant='flush' className='shadow-sm p-3 bg-white rounded border-0'>
+                    <Card className='shadow-sm p-3 bg-white rounded border-0'>
+                        <ListGroup variant='flush'>
                             <ListGroup.Item>
                                 <Row>
                                     <Col style={{ color: 'red' }}>
