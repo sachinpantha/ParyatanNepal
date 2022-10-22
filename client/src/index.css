@@ -42,3 +42,13 @@ Button {
 * {
 	font-family: 'Poppins', sans-serif;
 }
+main {
+	background-color: #f2f6fb;
+}
+.form {
+	background-color: white;
+}
+footer {
+	background-color: #1e3250;
+	color: white;
+}

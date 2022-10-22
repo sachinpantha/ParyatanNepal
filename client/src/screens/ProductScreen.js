@@ -30,7 +30,7 @@ const ProductScreen = () => {
         {loading ? <Loader /> : error ? <Message variant='danger'>{error}</Message> :
             <Row>
                 <Col md={6}>
-                    <Image src={product.image} alt={product.name} />
+                    <Image className='shadow-sm p-3 mb-5 bg-white rounded border-0' src={product.image} alt={product.name} />
                 </Col>
                 <Col md={3}>
                     <ListGroup className='shadow-sm p-3 mb-5 bg-white rounded' variant='flush'>
@@ -73,8 +73,9 @@ const ProductScreen = () => {
                             </ListGroup.Item>
                             <ListGroup.Item>
                                 <Button
+                                    style={{ "borderRadius": "5px" }}
                                     onClick={connectHandler}
-                                    className='btn-block' type='button' disabled={product.isAvailable === false}>
+                                    className='btn btn-success' type='button' disabled={product.isAvailable === false}>
                                     Get Connected!
                                 </Button>
                             </ListGroup.Item>

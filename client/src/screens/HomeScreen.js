@@ -20,7 +20,7 @@ const HomeScreen = () => {
     return (
         <>
             <h1>Guides</h1>
-            {loading ? <Loader /> : error ? <Message variant='danger' /> :
+            {loading ? <Loader /> : error ? <Message variant='danger'>Error Fetching Guides from server</Message> :
                 <Row>
                     {products.map((product) => {
                         return <Col key={product._id} sm={12} md={6} lg={4} xl={3}>

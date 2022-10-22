@@ -1,5 +1,6 @@
 import asyncHandler from 'express-async-handler'
 import Connection from '../models/connectModel.js'
+import User from '../models/userModel.js'
 //@desc Create new order
 //@routes GET /api/orders
 //@access Private
@@ -21,6 +22,7 @@ const addOrderItems = asyncHandler(async (req, res) => {
             totalPrice
         })
         const createdOrder = await order.save()
+        console.log(createdOrder)
         res.status(201).json(createdOrder)
     }
 })
@@ -61,8 +63,19 @@ const updateOrderToPaid = asyncHandler(async (req, res) => {
         throw new Error('Order not found')
     }
 })
+
+
+//@desc Get logged in user orders
+//@routes GET /api/orders/myconnections    <<myorders>>
+//@access Private
+const getMyOrders = asyncHandler(async (req, res) => {
+    const orders = await Connection.find({ user: req.user._id })
+    res.json(orders)
+})
+console.log(getMyOrders)
 export {
     addOrderItems,
     getOrderByID,
+    getMyOrders,
     updateOrderToPaid
 }

@@ -43,20 +43,22 @@ const PlaceOrderScreen = () => {
                 <Col md={8}>
                     <ListGroup variant='flush'>
                         <ListGroup.Item>
-                            <h2>Shipping</h2>
+                            <h5 style={{ color: '#D9534F' }}>Your Details</h5>
                             <p>
-                                <strong>Details::</strong>
-                                {connect.shippingAddress.name}, {connect.shippingAddress.address},{connect.shippingAddress.city}
-                                ,{connect.shippingAddress.number}, {connect.shippingAddress.email}
+                                <span style={{ "fontWeight": "bold" }}>NAME</span> : {connect.shippingAddress.name} {<br />}
+                                <span style={{ "fontWeight": "bold" }}>LOCAL ADDRESS</span> : {connect.shippingAddress.address} {<br />}
+                                <span style={{ "fontWeight": "bold" }}>CITY</span> : {connect.shippingAddress.city} {<br />}
+                                <span style={{ "fontWeight": "bold" }}>PHONE NUMBER</span> :{connect.shippingAddress.number}{<br />}
+                                <span style={{ "fontWeight": "bold" }}>EMAIL</span> :{connect.shippingAddress.email}
                             </p>
                         </ListGroup.Item>
                         <ListGroup.Item>
-                            <h2>Payment Method</h2>
+                            <h5 style={{ color: '#D9534F' }}>Payment Method</h5>
                             <strong>Method:</strong>
                             {connect.paymentMethod}
                         </ListGroup.Item>
                         <ListGroup.Item>
-                            <h2>Connected Guides</h2>
+                            <h5 style={{ color: '#D9534F' }}>Connected Guides</h5>
                             {connect.connectItems.length === 0 ? (<Message>Your Connection Wishlist is empty</Message>) : (
                                 <ListGroup variant='flush'>
                                     {
@@ -79,7 +81,7 @@ const PlaceOrderScreen = () => {
                     <Card>
                         <ListGroup variant='flush'>
                             <ListGroup.Item>
-                                <h2 style={{ color: '#D9534F' }}>Connection Summary</h2>
+                                <h5 className='text-center' style={{ color: '#D9534F' }}>Connection Summary</h5>
                             </ListGroup.Item>
                             <ListGroup.Item>
                                 <Row>
@@ -100,12 +102,7 @@ const PlaceOrderScreen = () => {
                                 </Row>
                             </ListGroup.Item>
                             <ListGroup.Item>
-                                {error && <Message variant='danger'>
-                                    {error}
-                                </Message>}
-                            </ListGroup.Item>
-                            <ListGroup.Item>
-                                <Button type='button' className='btn-block' disabled={connect.connectItems === 0} onClick={placeOrderHandler}>Place Connection</Button>
+                                <Button type='button' style={{ "borderRadius": "5px" }} className='btn btn-success' disabled={connect.connectItems === 0} onClick={placeOrderHandler}>Place Connection</Button>
                             </ListGroup.Item>
                         </ListGroup>
                     </Card>

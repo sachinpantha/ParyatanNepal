@@ -33,7 +33,7 @@ const ConnectScreen = () => {
                 {connectItems.length === 0 ? <Message>
                     Your Connection wishlist is empty <Link to='/'>Go Back</Link>
                 </Message> : (
-                    <ListGroup variant='flush'>
+                    <ListGroup variant='flush' className='shadow-sm p-3 mb-5 bg-white rounded border-0'>
                         {connectItems.map(item => (
                             <ListGroup.Item key={item.guideId}>
                                 <Row>
@@ -68,7 +68,7 @@ const ConnectScreen = () => {
                             {/* ${connectItems.reduce((item)=> item.fees)} */}
                         </ListGroup.Item>
                         <ListGroup.Item>
-                            <Button type='button' className='btn-block' disabled={connectItems.length === 0} onClick={checkoutHandler}>
+                            <Button type='button' style={{ "borderRadius": "5px" }} className='btn btn-success' disabled={connectItems.length === 0} onClick={checkoutHandler}>
                                 Proceed To Connect
                             </Button>
                         </ListGroup.Item>

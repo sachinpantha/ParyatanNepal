@@ -50,6 +50,7 @@ const OrderScreen = () => {
         }
     }, [dispatch, orderId, successPay, order])
     const successPaymentHandler = (paymentResult) => {
+        console.log(paymentResult)
         dispatch(payOrder(orderId, paymentResult))
     }
     return loading ? (<Loader />) : error ? (<Message variant='danger'>{error}</Message>) : (<>

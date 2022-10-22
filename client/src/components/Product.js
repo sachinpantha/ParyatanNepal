@@ -22,7 +22,7 @@ const Product = ({ product }) => {
                         <Rating value={product.ratings} text={`${product.numReviews} reviews`} />
                     </Card.Text>
                     <Card.Text>{
-                        <button type="button" className="btn btn-success">Hire</button>
+                        <button type="button" style={{ "borderRadius": "5px" }} className='btn btn-success'>Hire</button>
                     }</Card.Text>
                 </Link>
             </Card.Body>

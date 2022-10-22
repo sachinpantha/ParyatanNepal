@@ -24,11 +24,12 @@ const ShippingScreen = () => {
         <div>
             <FormContainer>
                 <CheckoutSteps step1 step2 />
-                <h1>Shipping</h1>
+                <h2 style={{ "color": "#251B37" }} className='text-center'>Enter your details</h2>
                 <Form onSubmit={submitHandler}>
                     <Form.Group controlId='name' className='address'>
                         <Form.Label>Name</Form.Label>
                         <Form.Control
+                            className='form'
                             type='text'
                             placeholder='Enter Your Name'
                             value={name}
@@ -39,6 +40,7 @@ const ShippingScreen = () => {
                     <Form.Group controlId='address' className='address'>
                         <Form.Label>Address</Form.Label>
                         <Form.Control
+                            className='form'
                             type='text'
                             placeholder='Enter Local Address'
                             value={address}
@@ -50,6 +52,7 @@ const ShippingScreen = () => {
                         <Form.Label>City</Form.Label>
                         <Form.Control
                             type='text'
+                            className='form'
                             placeholder='Enter City Name'
                             value={city}
                             required
@@ -60,6 +63,7 @@ const ShippingScreen = () => {
                         <Form.Label>Phone Number</Form.Label>
                         <Form.Control
                             type='number'
+                            className='form'
                             placeholder='Enter your local phone number'
                             value={number}
                             required
@@ -70,13 +74,14 @@ const ShippingScreen = () => {
                         <Form.Label>Email</Form.Label>
                         <Form.Control
                             type='email'
+                            className='form'
                             placeholder='Enter your Email'
                             value={email}
                             required
                             onChange={(e) => setEmail(e.target.value)}
                         ></Form.Control>
                     </Form.Group>
-                    <Button onClick={submitHandler} type='submit' variant='primary'>
+                    <Button onClick={submitHandler} type='submit' style={{ "borderRadius": "5px" }} className='btn btn-success'>
                         Continue
                     </Button>
                 </Form>

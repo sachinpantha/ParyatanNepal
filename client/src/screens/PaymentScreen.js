@@ -23,7 +23,7 @@ const PaymentScreen = () => {
         <div>
             <FormContainer>
                 <CheckoutSteps step1 step2 step3 />
-                <h1>Payment Method</h1>
+                <h2 className='text-center'>Payment Method</h2>
                 <Form onSubmit={submitHandler}>
                     <Form.Group>
                         <Form.Label as='legend'>
@@ -37,7 +37,7 @@ const PaymentScreen = () => {
                                                        KUNAI NAYA PAYMENT API YESMA INSERT GARDAA HUNCHA
                             </Form.Check> */}
                         </Col>
-                        <Button onClick={submitHandler} type='submit' variant='primary'>
+                        <Button onClick={submitHandler} type='submit' style={{ "borderRadius": "5px" }} className='btn btn-success'>
                             Continue
                         </Button>
                     </Form.Group>
