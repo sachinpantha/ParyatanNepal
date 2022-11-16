@@ -34,7 +34,7 @@ const importData = async () => {
 const destroyData = async () => {
     try {
         await Connection.deleteMany()
-        await Product.deleteMany()
+        // await Product.deleteMany()
         await User.deleteMany()
         console.log('Data Destroyed')
         process.exit()

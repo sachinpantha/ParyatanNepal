@@ -79,6 +79,7 @@ const ProductScreen = () => {
                                     Get Connected!
                                 </Button>
                             </ListGroup.Item>
+                            <span className='text-center my-6'>Pick a date and time for connection</span>
                             {product.isAvailable &&
                                 <ListGroup.Item>
                                     <DateTimePicker onChange={onChange} value={value} />

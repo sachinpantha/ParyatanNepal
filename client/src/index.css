@@ -53,3 +53,7 @@ footer {
 	background-color: #1e3250;
 	color: white;
 }
+.react-datetime-picker__clear-button,
+.react-datetime-picker__calendar-button {
+	margin: 0;
+}
