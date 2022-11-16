@@ -34,6 +34,10 @@ const guideSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    expertise: {
+        type: String,
+        required: true
+    },
     isAvailable: {
         type: Boolean,
         required: true,

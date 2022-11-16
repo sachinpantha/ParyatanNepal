@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useNavigate, Link, useParams } from 'react-router-dom'
 import { Row, Col, Image, ListGroup, Card, Button } from 'react-bootstrap'
 import DateTimePicker from 'react-datetime-picker';
+import Badge from 'react-bootstrap/Badge';
 import { MdVerified } from 'react-icons/md'
 import Rating from '../components/Rating'
 import { useDispatch, useSelector } from 'react-redux'
@@ -49,6 +50,10 @@ const ProductScreen = () => {
                         </ListGroup.Item>
                         <ListGroup.Item>
                             <p style={{ color: 'red' }}>Description: </p>{product.description}
+                        </ListGroup.Item>
+                        <ListGroup.Item>
+                            <span style={{ color: 'red' }}>Expertise{" "}</span>
+                            <Badge style={{ borderRadius: '5px' }} bg="info">{product.expertise}</Badge>{' '}
                         </ListGroup.Item>
                     </ListGroup>
                 </Col>
