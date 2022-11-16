@@ -1,6 +1,6 @@
 const products = [
     {
-        name: 'Christopher Nolan',
+        name: 'Dave Khadka',
         image: '/images/guide1.jpg',
         description: 'Christopher Nolan is a local tourist guide around solukhumbu district with experience over 200+ clients ',
         available: 'Yes',
@@ -11,7 +11,7 @@ const products = [
         location: 'Solukhumbu'
     },
     {
-        name: 'Richard Dawkins',
+        name: 'Richard Koirala',
         image: '/images/guide2.jpg',
         description: 'Richard Dawkins is a local tourist guide around Pokhara district with experience over 100+ clients ',
         available: 'No',
@@ -22,7 +22,7 @@ const products = [
         location: 'Butwal'
     },
     {
-        name: 'Christopher Murt',
+        name: 'Joe Pandey',
         image: '/images/guide3.jpg',
         description: 'Christopher Murt is a local tourist guide around Dharan district with experience over 300+ clients ',
         available: 'Yes',
@@ -33,7 +33,7 @@ const products = [
         location: 'Dharan'
     },
     {
-        name: 'Linda Jolie',
+        name: 'Linda Gautam',
         image: '/images/guide4.jpg',
         description: 'Sailesh Ghimire is a local tourist around Kathmandu district with experience over 100+ clients ',
         available: 'No',
@@ -44,7 +44,7 @@ const products = [
         location: 'Kathmandu'
     },
     {
-        name: 'Taylor Swift',
+        name: 'Taylor Bashyal',
         image: '/images/guide5.jpg',
         description: 'Taylor Swift is a local tourist around Mustang district with experience over 200+ clients ',
         available: 'Yes',
@@ -55,7 +55,7 @@ const products = [
         location: 'Dhankuta'
     },
     {
-        name: 'John Doe',
+        name: 'John Gyawali',
         image: '/images/guide6.jpg',
         description: 'John Doe is a local tourist around Bhairahawa district with experience over 100+ clients ',
         available: 'No',
@@ -66,7 +66,7 @@ const products = [
         location: 'Kapilvastu'
     },
     {
-        name: 'Brian Griffin',
+        name: 'Brian Bhattarai',
         image: '/images/guide7.jpg',
         description: 'Brian Griffin is a local tourist around Dadeldhura district with experience over 200+ clients ',
         available: 'Yes',
@@ -77,7 +77,7 @@ const products = [
         location: 'Biratnagar'
     },
     {
-        name: 'Stewie Griffin',
+        name: 'Stewie Bhandari',
         image: '/images/guide8.jpg',
         description: 'Mandip Poudel is a local tourist around Rupandehi district with experience over 100+ clients ',
         available: 'No',

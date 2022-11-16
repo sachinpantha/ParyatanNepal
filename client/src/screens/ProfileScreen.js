@@ -128,11 +128,11 @@ const ProfileScreen = () => {
             <Table striped bordered hover responsive className='table-sm'>
               <thead>
                 <tr>
-                  <th>ID</th>
-                  <th>DATE</th>
-                  <th>TOTAL</th>
-                  <th>PAID</th>
-                  <th>REACHED</th>
+                  <th>Guide ID</th>
+                  <th>Date</th>
+                  <th>Fees</th>
+                  <th>Paid Status</th>
+                  <th>Reach Status</th>
                 </tr>
               </thead>
               <tbody>

@@ -2,6 +2,7 @@ import React from 'react'
 import { Card } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import Rating from '../components/Rating'
+import { MdVerified } from 'react-icons/md'
 const Product = ({ product }) => {
     return (
         <Card className='shadow-sm p-3 mb-5 bg-white rounded border-0'>
@@ -16,6 +17,8 @@ const Product = ({ product }) => {
                             {
                                 product.name
                             }
+                            {" "}
+                            <MdVerified style={{ color: '#4169e1' }} />
                         </strong>
                     </Card.Title>
                     <Card.Text as='div'>

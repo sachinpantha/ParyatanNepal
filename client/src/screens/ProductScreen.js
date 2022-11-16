@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useNavigate, Link, useParams } from 'react-router-dom'
 import { Row, Col, Image, ListGroup, Card, Button } from 'react-bootstrap'
 import DateTimePicker from 'react-datetime-picker';
+import { MdVerified } from 'react-icons/md'
 import Rating from '../components/Rating'
 import { useDispatch, useSelector } from 'react-redux'
 //IN CURRENT VERSION OF REACT USEHISTORY IS NOT SUPPORTED INSTEAD USENAVIGATE IS USED 
@@ -30,12 +31,15 @@ const ProductScreen = () => {
         {loading ? <Loader /> : error ? <Message variant='danger'>{error}</Message> :
             <Row>
                 <Col md={6}>
-                    <Image className='shadow-sm p-3 mb-5 bg-white rounded border-0' src={product.image} alt={product.name} />
+                    <Image style={{ height: '319px', width: '319px' }} className='shadow-sm p-3 mb-5 bg-white rounded border-0' src={product.image} alt={product.name} />
                 </Col>
                 <Col md={3}>
                     <ListGroup className='shadow-sm p-3 mb-5 bg-white rounded' variant='flush'>
                         <ListGroup.Item>
-                            <h5 className='text-center'>{product.name}</h5>
+                            <h5 className='text-center'>{product.name}
+                                {" "}
+                                <MdVerified style={{ color: '#4169e1' }} />
+                            </h5>
                         </ListGroup.Item>
                         <ListGroup.Item>
                             <Rating value={product.ratings} text={`${product.numReviews} reviews`} />
