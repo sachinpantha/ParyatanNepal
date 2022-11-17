@@ -8,8 +8,8 @@ import FormContainer from '../components/FormContainer'
 import { register } from '../actions/userActions'
 
 const RegisterScreen = () => {
-    const navigate = useNavigate()
-    const location = useLocation()
+  const navigate = useNavigate()
+  const location = useLocation()
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -50,6 +50,7 @@ const RegisterScreen = () => {
           <Form.Control
             type='name'
             placeholder='Enter name'
+            className='form'
             value={name}
             onChange={(e) => setName(e.target.value)}
           ></Form.Control>
@@ -61,6 +62,7 @@ const RegisterScreen = () => {
             type='email'
             placeholder='Enter email'
             value={email}
+            className='form'
             onChange={(e) => setEmail(e.target.value)}
           ></Form.Control>
         </Form.Group>
@@ -70,6 +72,7 @@ const RegisterScreen = () => {
           <Form.Control
             type='password'
             placeholder='Enter password'
+            className='form'
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           ></Form.Control>
@@ -80,6 +83,7 @@ const RegisterScreen = () => {
           <Form.Control
             type='password'
             placeholder='Confirm password'
+            className='form'
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
           ></Form.Control>

@@ -4,6 +4,7 @@ import { Row, Col, Image, ListGroup, Card, Button } from 'react-bootstrap'
 import DateTimePicker from 'react-datetime-picker';
 import Badge from 'react-bootstrap/Badge';
 import { MdVerified } from 'react-icons/md'
+import { BsCircleFill } from 'react-icons/bs'
 import Rating from '../components/Rating'
 import { useDispatch, useSelector } from 'react-redux'
 //IN CURRENT VERSION OF REACT USEHISTORY IS NOT SUPPORTED INSTEAD USENAVIGATE IS USED 
@@ -76,7 +77,13 @@ const ProductScreen = () => {
                                         Status:
                                     </Col>
                                     <Col>
-                                        {product.isAvailable === true ? <p className='text-success'>Available</p> : <p className='text-danger'>Unvailable</p>}
+
+                                        {product.isAvailable === true ?
+                                            <span>
+                                                <span className='text-success'>Available</span>
+                                                <span> <BsCircleFill style={{ width: '10px', height: '10px', color: 'green' }} /></span>
+                                            </span>
+                                            : <p className='text-danger'>Unvailable</p>}
                                     </Col>
                                 </Row>
                             </ListGroup.Item>
