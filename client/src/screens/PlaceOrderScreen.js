@@ -86,19 +86,19 @@ const PlaceOrderScreen = () => {
                             <ListGroup.Item>
                                 <Row>
                                     <Col>Connections</Col>
-                                    <Col>${connect.itemsPrice}</Col>
+                                    <Col style={{ color: 'green' }}>${connect.itemsPrice}</Col>
                                 </Row>
                             </ListGroup.Item>
                             <ListGroup.Item>
                                 <Row>
                                     <Col>Tourism Taxes</Col>
-                                    <Col>${connect.taxPrice}</Col>
+                                    <Col style={{ color: 'green' }}>${connect.taxPrice}</Col>
                                 </Row>
                             </ListGroup.Item>
                             <ListGroup.Item>
                                 <Row>
                                     <Col>Total</Col>
-                                    <Col>${connect.totalPrice}</Col>
+                                    <Col style={{ color: 'green' }}>${connect.totalPrice}</Col>
                                 </Row>
                             </ListGroup.Item>
                             <ListGroup.Item>

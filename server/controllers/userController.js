@@ -66,36 +66,48 @@ const getUserProfile = asyncHandler(async (req, res) => {
         throw new Error('Invalid Email or Password')
     }
 })
-export {
-    authUser,
-    getUserProfile,
-    registerUser,
-    updateUserProfile
-}
+
+
 
 // @desc    Update user profile
 // @route   PUT /api/users/profile
 // @access  Private
 const updateUserProfile = asyncHandler(async (req, res) => {
     const user = await User.findById(req.user._id)
-  
+
     if (user) {
-      user.name = req.body.name || user.name
-      user.email = req.body.email || user.email
-      if (req.body.password) {
-        user.password = req.body.password
-      }
-  
-      const updatedUser = await user.save()
-  
-      res.json({
-        _id: updatedUser._id,
-        name: updatedUser.name,
-        email: updatedUser.email,
-        token: generateToken(updatedUser._id),
-      })
+        user.name = req.body.name || user.name
+        user.email = req.body.email || user.email
+        if (req.body.password) {
+            user.password = req.body.password
+        }
+
+        const updatedUser = await user.save()
+
+        res.json({
+            _id: updatedUser._id,
+            name: updatedUser.name,
+            email: updatedUser.email,
+            token: generateToken(updatedUser._id),
+        })
     } else {
-      res.status(404)
-      throw new Error('User not found')
+        res.status(404)
+        throw new Error('User not found')
     }
-  })
+})
+
+//@desc get all users
+//@routes GET/api/users
+//@access Private/Admin
+const getUsers = asyncHandler(async (req, res) => {
+    const user = await User.find({})
+    res.json(user)
+
+})
+export {
+    authUser,
+    getUserProfile,
+    registerUser,
+    updateUserProfile,
+    getUsers
+}

@@ -40,21 +40,21 @@ const ProductScreen = () => {
                         <ListGroup.Item>
                             <h5 className='text-center'>{product.name}
                                 {" "}
-                                <MdVerified style={{ color: '#4169e1' }} />
+                                <MdVerified data-toggle="tooltip" data-placement="right" title="Paryatan Nepal Certified Guide" style={{ color: '#4169e1', cursor: 'pointer' }} />
                             </h5>
                         </ListGroup.Item>
                         <ListGroup.Item>
                             <Rating value={product.ratings} text={`${product.numReviews} reviews`} />
                         </ListGroup.Item>
                         <ListGroup.Item>
-                            <span style={{ color: 'red' }}>Fees:</span> {product.fees}
+                            <span style={{ color: 'red' }}>Fees:</span> ${product.fees}
                         </ListGroup.Item>
                         <ListGroup.Item>
                             <p style={{ color: 'red' }}>Description: </p>{product.description}
                         </ListGroup.Item>
                         <ListGroup.Item>
                             <span style={{ color: 'red' }}>Expertise{" "}</span>
-                            <Badge style={{ borderRadius: '5px' }} bg="info">{product.expertise}</Badge>{' '}
+                            <Badge data-toggle="tooltip" data-placement="right" title={`This Guide has expertise on ${product.expertise}`} style={{ borderRadius: '5px', cursor: 'pointer' }} bg="info">{product.expertise}</Badge>{' '}
                         </ListGroup.Item>
                     </ListGroup>
                 </Col>
@@ -81,7 +81,7 @@ const ProductScreen = () => {
                                         {product.isAvailable === true ?
                                             <span>
                                                 <span className='text-success'>Available</span>
-                                                <span> <BsCircleFill style={{ width: '10px', height: '10px', color: 'green' }} /></span>
+                                                <span> <BsCircleFill style={{ width: '10px', height: '10px', color: '#82CD47' }} /></span>
                                             </span>
                                             : <p className='text-danger'>Unvailable</p>}
                                     </Col>
@@ -91,11 +91,14 @@ const ProductScreen = () => {
                                 <Button
                                     style={{ "borderRadius": "5px" }}
                                     onClick={connectHandler}
-                                    className='btn btn-success' type='button' disabled={product.isAvailable === false}>
+                                    className={product.isAvailable == true ? "btn btn-success" : "btn btn-danger"} type='button' disabled={product.isAvailable === false}>
                                     Get Connected!
                                 </Button>
                             </ListGroup.Item>
-                            <span className='text-center my-6'>Pick a date and time for connection</span>
+                            {
+                                product.isAvailable == true ? <span className='text-center my-6'>Pick a date and time for connection</span> : ""
+                            }
+
                             {product.isAvailable &&
                                 <ListGroup.Item>
                                     <DateTimePicker onChange={onChange} value={value} />
