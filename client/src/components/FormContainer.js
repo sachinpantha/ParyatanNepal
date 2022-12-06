@@ -1,16 +1,28 @@
-import React from 'react'
-import { Container, Row, Col } from 'react-bootstrap'
-
+import React from "react";
+import { Container, Row, Col } from "react-bootstrap";
+import { AiFillHome, AiOutlineArrowLeft, AiTwotoneHome } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
+import logo from "../logo.png";
 const FormContainer = ({ children }) => {
+  let navigate = useNavigate();
+  const handleGoBack = () => {
+    navigate("/");
+  };
   return (
-    <Container>
-      <Row className='justify-content-md-center'>
-        <Col xs={12} md={6}>
-          {children}
-        </Col>
-      </Row>
+    <Container className="custom-form-container" data-aos="fade-right">
+      <div className="custom-form">
+        <img className="form-logo" src={logo} />
+        <span className="back" onClick={handleGoBack}>
+          <AiFillHome />
+        </span>
+        <Row className="justify-content-md-center">
+          <Col xs={12} md={6} gap>
+            {children}
+          </Col>
+        </Row>
+      </div>
     </Container>
-  )
-}
+  );
+};
 
-export default FormContainer
+export default FormContainer;
