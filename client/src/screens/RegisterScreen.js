@@ -109,7 +109,7 @@ const RegisterScreen = () => {
       <Row className="py-3">
         <Col>
           Have an Account?{" "}
-          <Link to={redirect ? `/login?redirect=${redirect}` : "/login"}>
+          <Link style={{ color: "red" }} to={redirect ? `/login?redirect=${redirect}` : "/login"}>
             Login
           </Link>
         </Col>
