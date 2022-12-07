@@ -1,0 +1,2 @@
+export const IS_LANDING_TRUE = "IS_LANDING_TRUE";
+export const IS_LANDING_FALSE = "IS_LANDING_FALSE";

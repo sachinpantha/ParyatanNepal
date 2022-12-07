@@ -18,44 +18,42 @@ import LandingPage from "./screens/LandingPage";
 import { useEffect } from "react";
 import Aos from "aos";
 import "aos/dist/aos.css";
+import { useSelector } from "react-redux";
 const App = () => {
-  const [isLanding, setLanding] = useState(
-    Boolean(
-      window.location.pathname == "/" ||
-        window.location.pathname == "/login" ||
-        window.location.pathname == "/register"
-    )
-  );
   useEffect(() => {
-    setLanding(!isLanding);
     Aos.init({ easing: "ease", duration: 700 });
   }, []);
+  const isloggedIn = useSelector(
+    (state) => state?.userLogin?.userInfo?.isloggedIn
+  );
   return (
     <>
       <Router>
-        {isLanding && <Header />}
+        <>
+          {(isloggedIn || localStorage.getItem("isloggedIn")) && <Header />}
 
-        <main className="py-3">
-          <Container>
-            <Routes>
-              <Route path="/login/shipping" element={<ShippingScreen />} />
-              <Route path="/" element={<LandingPage />} />
-              <Route path="/orders/:id" element={<OrderScreen />} />
-              <Route path="/payment" element={<PaymentScreen />} />
-              <Route path="/placeconnect" element={<PlaceOrderScreen />} />
-              <Route path="/login" element={<LoginScreen />} />
-              <Route path="/register" element={<RegisterScreen />} />
-              <Route path="/profile" element={<ProfileScreen />} />
-              <Route path="/home" element={<HomeScreen />} />
-              <Route path="/product/:id" element={<ProductScreen />} />
-              <Route path="/connect" element={<ConnectScreen />} />
-              <Route path="/connect/:id" element={<ConnectScreen />} />
-              <Route path="/admin/userlist" element={<UserListScreen />} />
-            </Routes>
-          </Container>
-        </main>
+          <main className="py-3">
+            <Container>
+              <Routes>
+                <Route exact path="/" element={<LandingPage />} />
+                <Route path="/login/shipping" element={<ShippingScreen />} />
+                <Route path="/orders/:id" element={<OrderScreen />} />
+                <Route path="/payment" element={<PaymentScreen />} />
+                <Route path="/placeconnect" element={<PlaceOrderScreen />} />
+                <Route path="/login" element={<LoginScreen />} />
+                <Route path="/register" element={<RegisterScreen />} />
+                <Route path="/profile" element={<ProfileScreen />} />
+                <Route path="/home" element={<HomeScreen />} />
+                <Route path="/product/:id" element={<ProductScreen />} />
+                <Route path="/connect" element={<ConnectScreen />} />
+                <Route path="/connect/:id" element={<ConnectScreen />} />
+                <Route path="/admin/userlist" element={<UserListScreen />} />
+              </Routes>
+            </Container>
+          </main>
+          {(isloggedIn || localStorage.getItem("isloggedIn")) && <Footer />}
+        </>
       </Router>
-      {isLanding && <Footer />}
     </>
   );
 };

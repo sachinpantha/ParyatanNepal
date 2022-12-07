@@ -59,16 +59,6 @@ footer {
   margin: 0;
 }
 
-main:not(.overlay) {
-  padding: 0 !important;
-  min-width: 100vw !important;
-  margin: 0 !important;
-}
-.container:not(.overlay) {
-  margin: 0 !important;
-  padding: 0 !important;
-}
-
 .landing-nav {
   position: absolute;
   width: 100vw;
@@ -111,10 +101,12 @@ main:not(.overlay) {
   width: 100vw;
   height: 100vh;
   position: absolute;
+  inset: 0;
   background-size: cover;
 }
 .landingPage {
-  position: relative;
+  position: absolute;
+  inset: 0;
   width: 100vw;
   overflow: hidden;
   display: grid;
@@ -133,8 +125,6 @@ main:not(.overlay) {
   align-items: center;
   justify-content: center !important;
   gap: 0 !important;
-  min-width: 100vw;
-  max-width: 100vw;
   min-height: 100vh;
   max-height: 100vh;
 }
@@ -189,7 +179,7 @@ main:not(.overlay) {
   transform: translateY(-50%);
   justify-content: center;
 }
-.back{
+.back {
   width: 40px !important;
   height: 40px !important;
   display: grid;
@@ -200,10 +190,16 @@ main:not(.overlay) {
   font-size: 24px;
   right: 10px;
 }
-.back-text{
+.back-text {
   color: #cd1d1d;
   visibility: none;
 }
-.back:hover .back-text{
-  
+/* main:not(.overlay) {
+  padding: 0 !important;
+  min-width: 100vw !important;
+  margin: 0 !important;
 }
+.container:not(.overlay) {
+  margin: 0 !important;
+  padding: 0 !important;
+} */
