@@ -22,6 +22,7 @@
 	},
 	"homepage": "https://github.com/sachinpantha/Paryatan-Nepal#readme",
 	"dependencies": {
+		"aos": "^2.3.4",
 		"bcryptjs": "^2.4.3",
 		"dotenv": "^16.0.1",
 		"express": "^4.18.1",
