@@ -57,3 +57,16 @@ footer {
 .react-datetime-picker__calendar-button {
 	margin: 0;
 }
+.map-container {
+	max-width: 300px !important;
+	min-width: 300px !important;
+	max-height: 350px !important;
+	min-height: 350px !important;
+	overflow: hidden !important;
+	border: 1px solid black;
+}
+.shipping-div {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}

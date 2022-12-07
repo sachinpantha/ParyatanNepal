@@ -19,7 +19,7 @@ const addOrderItems = asyncHandler(async (req, res) => {
             paymentMethod,
             itemsPrice,
             taxPrice,
-            totalPrice
+            totalPrice,
         })
         const createdOrder = await order.save()
         console.log(createdOrder)
