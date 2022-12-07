@@ -1,6 +1,7 @@
 import React from "react";
 import Button from "../components/Button";
 import logo from "../logo.png";
+import Typewriter from "typewriter-effect";
 import landing from "../landing.jpg";
 import { useNavigate } from "react-router-dom";
 import LoginScreen from "./LoginScreen";
@@ -25,10 +26,17 @@ function LandingPage() {
             <Button text={`Sign Up`} primary clickEvent={signUpPage} />
           </div>
         </div>
-        <div className="landing-content" data-aos="zoom-out-right">
-          <h1>
-            <q>तपाईंको पर्यटकिय साथी</q>
-          </h1>
+        <div className="landing-content">
+          <Typewriter
+            options={{
+              strings: [
+                "तपाईंको पर्यटकिय साथी",
+                "Guiding destinations",
+              ],
+              autoStart: true,
+              loop: true,
+            }}
+          />
         </div>
         {/* <div className="absolute">
         <LoginScreen />
