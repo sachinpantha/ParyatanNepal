@@ -133,11 +133,10 @@ footer {
 	border-radius: 4px;
 	display: grid;
 	position: relative;
+	box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+		rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
 	width: 500px !important;
 	height: 600px !important;
-	border: 2px solid;
-	border-color: rgba(205, 29, 29, 0.09);
-
 	place-items: center;
 	min-height: fit-content !important;
 	min-width: fit-content !important;

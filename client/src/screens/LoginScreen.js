@@ -19,12 +19,16 @@ const LoginScreen = () => {
 
   const userLogin = useSelector((state) => state.userLogin);
   const { loading, error, userInfo } = userLogin;
-
   const redirect = location.search ? location.search.split("=")[1] : "/home";
   const [type, setType] = useState("password");
   useEffect(() => {
     if (userInfo) {
       navigate(redirect);
+      toast('Login Successful!', {
+        type: 'success',
+        autoClose: 1500,
+        position: 'top-right'
+      })
     }
   }, [navigate, userInfo, redirect]);
 
@@ -52,7 +56,6 @@ const LoginScreen = () => {
         position: 'top-right'
       })
     }
-
   };
   const handleToggle = () => {
     setType(type == "password" ? "text" : "password");
@@ -98,7 +101,7 @@ const LoginScreen = () => {
       <Row className="py-3">
         <Col>
           New Customer?{" "}
-          <Link to={redirect ? `/register?redirect=${redirect}` : "/register"}>
+          <Link style={{ color: "#DC3535" }} to={redirect ? `/register?redirect=${redirect}` : "/register"}>
             Register
           </Link>
         </Col>
