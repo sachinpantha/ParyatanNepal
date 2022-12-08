@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react'
 import { Link, useParams, useLocation, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { Row, Col, ListGroup, Image, From, Button, Card } from 'react-bootstrap'
+import { Row, Col, ListGroup, Image, From, Button, Card, Toast } from 'react-bootstrap'
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 import Message from '../components/Message'
 import { connectToGuide, removeFromConnection } from '../actions/connectActions'
 const ConnectScreen = () => {
@@ -20,8 +22,14 @@ const ConnectScreen = () => {
         }
     }, [dispatch, guideId, time])
     const removeFromConnectionHandler = (id) => {
-
         dispatch(removeFromConnection(id))
+        toast('Removed from Wishlist', {
+            type: 'success',
+            autoClose: 1500,
+            position: 'top-right'
+        })
+
+
     }
     const checkoutHandler = () => {
         navigate('/login/shipping')
@@ -31,7 +39,7 @@ const ConnectScreen = () => {
             <Col md={8} >
                 <h4 >Connection Wishlist</h4>
                 {connectItems.length === 0 ? <Message>
-                    Your Connection wishlist is empty <Link to='/'>Go Back</Link>
+                    Your Connection wishlist is empty <Link to='/home'>Go Back</Link>
                 </Message> : (
                     <ListGroup variant='flush' className='shadow-sm p-3 mb-5 bg-white rounded border-0'>
                         {connectItems.map(item => (

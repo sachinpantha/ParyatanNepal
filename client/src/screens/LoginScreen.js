@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
 import FormContainer from "../components/FormContainer";
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 import { login } from "../actions/userActions";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 const LoginScreen = () => {
@@ -29,14 +31,36 @@ const LoginScreen = () => {
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(login(email, password));
+    if (email.length == 0) {
+      toast('Email field must not be empty!', {
+        type: 'warning',
+        autoClose: 1500,
+        position: 'top-right'
+      })
+    }
+    else if (password.length == 0) {
+      toast('Password field must not be empty!', {
+        type: 'warning',
+        autoClose: 1500,
+        position: 'top-right'
+      })
+    }
+    else if (password.length < 8) {
+      toast('Password must be 8 characters long!', {
+        type: 'warning',
+        autoClose: 1500,
+        position: 'top-right'
+      })
+    }
+
   };
   const handleToggle = () => {
     setType(type == "password" ? "text" : "password");
   };
   return (
     <FormContainer>
-      <h1>Sign In</h1>
-      {error && <Message variant="danger">{error}</Message>}
+      <h5 style={{ color: "#DC3535" }}>Sign In</h5>
+      {/* {error && <Message variant="danger">{error}</Message>} */}
       {loading && <Loader />}
       <Form onSubmit={submitHandler}>
         <Form.Group controlId="email">
@@ -66,7 +90,7 @@ const LoginScreen = () => {
           </div>
         </Form.Group>
 
-        <Button type="submit" variant="primary">
+        <Button style={{ borderRadius: '5px', backgroundColor: '#CF0A0A' }} type="submit" variant="primary">
           Sign In
         </Button>
       </Form>

@@ -27,7 +27,7 @@ const ProductScreen = () => {
         navigate(`/connect/${id}?time=${value}`)
     }
     return <>
-        <Link className='btn btn-dark my-3 rounded-pill' to='/'>
+        <Link className='btn btn-dark my-3 rounded-pill' to='/home'>
             <i className="fa-solid fa-arrow-left"></i>
         </Link>
         {loading ? <Loader /> : error ? <Message variant='danger'>{error}</Message> :

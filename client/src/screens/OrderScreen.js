@@ -4,6 +4,8 @@ import { PayPalButton } from 'react-paypal-button-v2'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
 import Message from '../components/Message'
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 import Loader from '../components/Loader'
 import { getOrderDetails, payOrder } from '../actions/orderActions'
 import { ORDER_PAY_RESET } from '../constants/orderConstants'
@@ -50,6 +52,11 @@ const OrderScreen = () => {
     }, [dispatch, orderId, successPay, order])
     const successPaymentHandler = (paymentResult) => {
         dispatch(payOrder(orderId, paymentResult))
+        toast('Payment Successful!', {
+            type: 'success',
+            autoClose: 1500,
+            position: 'top-right'
+        })
     }
     return loading ? (<Loader />) : error ? (<Message variant='danger'>{error}</Message>) : (<>
         <Row>

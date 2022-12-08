@@ -6,6 +6,8 @@ import Message from "../components/Message";
 import Loader from "../components/Loader";
 import FormContainer from "../components/FormContainer";
 import { register } from "../actions/userActions";
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 
 const RegisterScreen = () => {
@@ -36,15 +38,33 @@ const RegisterScreen = () => {
   const submitHandler = (e) => {
     e.preventDefault();
     if (password !== confirmPassword) {
-      setMessage("Passwords do not match");
-    } else {
-      dispatch(register(name, email, password));
+      toast('Password does not match!', {
+        type: 'warning',
+        autoClose: 1500,
+        position: 'top-right'
+      })
     }
+    else if (password.length < 8) {
+      toast('Password must be 8 characters long!', {
+        type: 'warning',
+        autoClose: 1500,
+        position: 'top-right'
+      })
+    }
+    else {
+      dispatch(register(name, email, password));
+      toast('Registered Successfully!', {
+        type: 'success',
+        autoClose: 1500,
+        position: 'top-right'
+      })
+    }
+
   };
 
   return (
     <FormContainer>
-      <h1>Sign Up</h1>
+      <h5 style={{ color: "#DC3535" }}>Sign Up</h5>
       {message && <Message variant="danger">{message}</Message>}
       {error && <Message variant="danger">{error}</Message>}
       {loading && <Loader />}
@@ -53,6 +73,8 @@ const RegisterScreen = () => {
           <Form.Label>Name</Form.Label>
           <Form.Control
             type="name"
+            required
+            autoComplete="off"
             placeholder="Enter name"
             className="form"
             value={name}
@@ -64,6 +86,8 @@ const RegisterScreen = () => {
           <Form.Label>Email Address</Form.Label>
           <Form.Control
             type="email"
+            autoComplete="off"
+            required
             placeholder="Enter email"
             value={email}
             className="form"
@@ -76,6 +100,8 @@ const RegisterScreen = () => {
           <div className="fc-password">
             <Form.Control
               type={type}
+              autoComplete="off"
+              required
               placeholder="Enter password"
               className="form password"
               value={password}
@@ -91,7 +117,9 @@ const RegisterScreen = () => {
           <Form.Label>Confirm Password</Form.Label>
           <div className="fc-password">
             <Form.Control
+              required
               type={type}
+              autoComplete="off"
               placeholder="Confirm password"
               className="form"
               value={confirmPassword}
@@ -101,7 +129,7 @@ const RegisterScreen = () => {
           </div>
         </Form.Group>
 
-        <Button type="submit" variant="primary">
+        <Button style={{ borderRadius: '5px', backgroundColor: '#CF0A0A' }} type="submit" variant="primary">
           Register
         </Button>
       </Form>
@@ -109,7 +137,7 @@ const RegisterScreen = () => {
       <Row className="py-3">
         <Col>
           Have an Account?{" "}
-          <Link style={{ color: "red" }} to={redirect ? `/login?redirect=${redirect}` : "/login"}>
+          <Link style={{ color: "#DC3535" }} to={redirect ? `/login?redirect=${redirect}` : "/login"}>
             Login
           </Link>
         </Col>
