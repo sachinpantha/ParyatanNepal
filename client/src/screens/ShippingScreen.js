@@ -5,7 +5,7 @@ import FormContainer from '../components/FormContainer'
 import CheckoutSteps from '../components/CheckoutSteps'
 import { useNavigate } from 'react-router-dom'
 import { SaveShippingAddress } from '../actions/connectActions'
-import { MapContainer, TileLayer, useMap, Marker, Popup, CircleMarker } from 'react-leaflet'
+import { MapContainer, TileLayer, Popup, CircleMarker } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css'
 
 import { useEffect } from 'react'
@@ -108,13 +108,16 @@ const ShippingScreen = () => {
                             required
                         ></Form.Control>
                     </Form.Group>
-                    <Button onClick={getCordinate} style={{ "borderRadius": "5px" }} className='btn btn-success'>
-                        Get My Coordinates!
-                    </Button><br />
-                    <Button onClick={submitHandler} type='submit' style={{ "borderRadius": "5px" }} className='btn btn-success'>
-                        Continue
-                    </Button>
+                    <div style={{ display: 'flex', gap: '1.25rem' }}>
+                        <Button onClick={getCordinate} style={{ "borderRadius": "5px" }} className='btn btn-success'>
+                            Get My Coordinates!
+                        </Button>
+                        <Button onClick={submitHandler} type='submit' style={{ "borderRadius": "5px" }} className='btn btn-success'>
+                            Continue
+                        </Button>
+                    </div>
                 </Form>
+
             </FormContainer>
             {
                 lat && lon && (

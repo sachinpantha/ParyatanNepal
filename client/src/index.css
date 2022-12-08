@@ -126,6 +126,16 @@ footer {
 	min-height: 100vh;
 	max-height: 100vh;
 }
+.map-container {
+	height: 450px !important;
+	max-height: max-content;
+	width: 450px !important;
+}
+.shipping-div {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
 .custom-form {
 	margin: 0 auto !important;
 	background-color: white;
