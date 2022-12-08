@@ -59,7 +59,7 @@ export const login = (email, password) => async (dispatch) => {
           ? error.response.data.message
           : error.message,
     });
-    toast('Login Failed!', {
+    toast('User Does not exist!', {
       type: 'error',
       autoClose: 1500,
       position: 'top-right'
