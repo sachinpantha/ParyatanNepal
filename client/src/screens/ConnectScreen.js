@@ -39,7 +39,7 @@ const ConnectScreen = () => {
             <Col md={8} >
                 <h4 >Connection Wishlist</h4>
                 {connectItems.length === 0 ? <Message>
-                    Your Connection wishlist is empty <Link to='/home'>Go Back</Link>
+                    Your Connection wishlist is empty <Link to='/'>Go Back</Link>
                 </Message> : (
                     <ListGroup variant='flush' className='shadow-sm p-3 mb-5 bg-white rounded border-0'>
                         {connectItems.map(item => (

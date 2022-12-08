@@ -27,6 +27,7 @@ const RegisterScreen = () => {
 
   const redirect = location.search ? location.search.split("=")[1] : "/";
 
+
   useEffect(() => {
     if (userInfo) {
       navigate(redirect);
@@ -53,17 +54,12 @@ const RegisterScreen = () => {
     }
     else {
       dispatch(register(name, email, password));
-      toast('Registered Successfully!', {
-        type: 'success',
-        autoClose: 1500,
-        position: 'top-right'
-      })
     }
 
   };
 
   return (
-    <FormContainer>
+    <FormContainer custom>
       <h5 style={{ color: "#DC3535" }}>Sign Up</h5>
       {message && <Message variant="danger">{message}</Message>}
       {error && <Message variant="danger">{error}</Message>}

@@ -38,7 +38,7 @@ const PlaceOrderScreen = () => {
     }
     return (
         <>
-            <CheckoutSteps step1 step2 step3 step4 />
+            <h5 style={{ color: "#D9534F" }}>Final Connection</h5>
             <Row>
                 <Col md={8}>
                     <ListGroup variant='flush' className='shadow-sm p-3 mb-5 bg-white rounded border-0'>

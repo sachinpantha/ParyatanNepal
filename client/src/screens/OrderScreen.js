@@ -52,11 +52,6 @@ const OrderScreen = () => {
     }, [dispatch, orderId, successPay, order])
     const successPaymentHandler = (paymentResult) => {
         dispatch(payOrder(orderId, paymentResult))
-        toast('Payment Successful!', {
-            type: 'success',
-            autoClose: 1500,
-            position: 'top-right'
-        })
     }
     return loading ? (<Loader />) : error ? (<Message variant='danger'>{error}</Message>) : (<>
         <Row>
