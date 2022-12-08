@@ -20,7 +20,7 @@ const LoginScreen = () => {
   const userLogin = useSelector((state) => state.userLogin);
   const { loading, error, userInfo } = userLogin;
 
-  const redirect = location.search ? location.search.split("=")[1] : "/home";
+  const redirect = location.search ? location.search.split("=")[1] : "/";
   const [type, setType] = useState("password");
   useEffect(() => {
     if (userInfo) {
@@ -58,7 +58,7 @@ const LoginScreen = () => {
     setType(type == "password" ? "text" : "password");
   };
   return (
-    <FormContainer>
+    <FormContainer custom>
       <h5 style={{ color: "#DC3535" }}>Sign In</h5>
       {/* {error && <Message variant="danger">{error}</Message>} */}
       {loading && <Loader />}

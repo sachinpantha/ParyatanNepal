@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "./components/Header";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import { Container } from "react-bootstrap";
 import Footer from "./components/Footer";
 import HomeScreen from "./screens/HomeScreen";
@@ -16,7 +16,6 @@ import PlaceOrderScreen from "./screens/PlaceOrderScreen.js";
 import OrderScreen from "./screens/OrderScreen.js";
 import UserListScreen from "./screens/UserListScreen.js";
 import LandingPage from "./screens/LandingPage";
-import { useEffect } from "react";
 import Aos from "aos";
 import "aos/dist/aos.css";
 import { useSelector } from "react-redux";
@@ -27,6 +26,9 @@ const App = () => {
   const isloggedIn = useSelector(
     (state) => state?.userLogin?.userInfo?.isloggedIn
   );
+  useEffect(() => {
+
+  }, [isloggedIn])
   return (
     <>
       <Router>
@@ -37,7 +39,7 @@ const App = () => {
             <Container>
               <ToastContainer></ToastContainer>
               <Routes>
-                <Route exact path="/" element={<LandingPage />} />
+                <Route exact path="/" element={isloggedIn ? <HomeScreen /> : <LandingPage />} />
                 <Route path="/login/shipping" element={<ShippingScreen />} />
                 <Route path="/orders/:id" element={<OrderScreen />} />
                 <Route path="/payment" element={<PaymentScreen />} />
@@ -45,7 +47,6 @@ const App = () => {
                 <Route path="/login" element={<LoginScreen />} />
                 <Route path="/register" element={<RegisterScreen />} />
                 <Route path="/profile" element={<ProfileScreen />} />
-                <Route path="/home" element={<HomeScreen />} />
                 <Route path="/product/:id" element={<ProductScreen />} />
                 <Route path="/connect" element={<ConnectScreen />} />
                 <Route path="/connect/:id" element={<ConnectScreen />} />

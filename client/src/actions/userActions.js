@@ -18,6 +18,9 @@ import {
   USER_LIST_SUCCESS,
   USER_LIST_FAIL,
 } from "../constants/userConstants";
+import { useNavigate } from "react-router-dom";
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 import { ORDER_LIST_MY_RESET } from "../constants/orderConstants";
 export const login = (email, password) => async (dispatch) => {
   try {
@@ -41,6 +44,11 @@ export const login = (email, password) => async (dispatch) => {
       type: USER_LOGIN_SUCCESS,
       payload: userInfo,
     });
+    toast('Login Successful!', {
+      type: 'success',
+      autoClose: 1500,
+      position: 'top-right'
+    })
 
     localStorage.setItem("userInfo", JSON.stringify(userInfo));
   } catch (error) {
@@ -51,6 +59,11 @@ export const login = (email, password) => async (dispatch) => {
           ? error.response.data.message
           : error.message,
     });
+    toast('Login Failed!', {
+      type: 'error',
+      autoClose: 1500,
+      position: 'top-right'
+    })
   }
 };
 
@@ -84,12 +97,13 @@ export const register = (name, email, password) => async (dispatch) => {
       payload: data,
     });
 
+    const userInfo = { ...data, isloggedIn: Boolean(data?.token) };
     dispatch({
       type: USER_LOGIN_SUCCESS,
-      payload: data,
+      payload: userInfo,
     });
 
-    localStorage.setItem("userInfo", JSON.stringify(data));
+    localStorage.setItem("userInfo", JSON.stringify(userInfo));
   } catch (error) {
     dispatch({
       type: USER_REGISTER_FAIL,

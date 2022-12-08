@@ -13,6 +13,8 @@ import {
     ORDER_LIST_MY_FAIL
 } from "../constants/orderConstants";
 import axios from "axios";
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 export const createOrder = (order) => async (dispatch, getState) => {
     try {
         dispatch({
@@ -105,6 +107,11 @@ export const payOrder = (orderId, paymentResult) => async (dispatch, getState) =
         dispatch({
             type: ORDER_PAY_SUCCESS,
             payload: data,
+        })
+        toast('Payment successful!', {
+            type: 'success',
+            autoClose: 1500,
+            position: 'top-right'
         })
     } catch (error) {
         const message =
