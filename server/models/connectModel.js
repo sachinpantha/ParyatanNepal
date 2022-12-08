@@ -13,7 +13,8 @@ const connectSchema = mongoose.Schema({
     }],
     shippingAddress: {
         address: { type: String, required: true },
-        city: { type: String, required: true },
+        lat: { type: Number },
+        lon: { type: Number },
     },
     paymentResult: {
         id: { type: String },
