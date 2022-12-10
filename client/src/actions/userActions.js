@@ -96,6 +96,11 @@ export const register = (name, email, password) => async (dispatch) => {
       type: USER_REGISTER_SUCCESS,
       payload: data,
     });
+    toast('User Registered Successfully!', {
+      type: 'success',
+      autoClose: 1500,
+      position: 'top-right'
+    })
 
     const userInfo = { ...data, isloggedIn: Boolean(data?.token) };
     dispatch({
