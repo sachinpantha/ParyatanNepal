@@ -40,7 +40,7 @@ const App = () => {
               <ToastContainer></ToastContainer>
               <Routes>
                 <Route exact path="/" element={isloggedIn ? <HomeScreen /> : <LandingPage />} />
-                <Route path="/login/shipping" element={<ShippingScreen />} />
+                <Route path="/shipping" element={<ShippingScreen />} />
                 <Route path="/orders/:id" element={<OrderScreen />} />
                 <Route path="/payment" element={<PaymentScreen />} />
                 <Route path="/placeconnect" element={<PlaceOrderScreen />} />

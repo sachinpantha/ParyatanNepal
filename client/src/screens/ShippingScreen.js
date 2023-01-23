@@ -13,10 +13,10 @@ const ShippingScreen = () => {
     const connect = useSelector((state) => state.connect)
     const { shippingAddress } = connect
     const navigate = useNavigate()
-    const [name, setName] = useState(shippingAddress.name)
-    const [number, setNumber] = useState(shippingAddress.number)
-    const [address, setAddress] = useState(shippingAddress.address)
-    const [email, setEmail] = useState(shippingAddress.email)
+    const [name, setName] = useState(shippingAddress?.name)
+    const [number, setNumber] = useState(shippingAddress?.number)
+    const [address, setAddress] = useState(shippingAddress?.address)
+    const [email, setEmail] = useState(shippingAddress?.email)
     const [lat, setLat] = useState()
     const [lon, setLon] = useState()
     useEffect(() => {

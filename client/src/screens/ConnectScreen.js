@@ -32,7 +32,7 @@ const ConnectScreen = () => {
 
     }
     const checkoutHandler = () => {
-        navigate('/login/shipping')
+        navigate('/shipping')
     }
     return (
         <Row>

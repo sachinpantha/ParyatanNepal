@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Form, Button, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Message from "../components/Message";
+import { Spinner } from 'react-bootstrap'
 import Loader from "../components/Loader";
 import FormContainer from "../components/FormContainer";
 import { toast } from 'react-toastify'
@@ -59,7 +60,6 @@ const LoginScreen = () => {
     <FormContainer custom>
       <h5 style={{ color: "#DC3535" }}>Sign In</h5>
       {/* {error && <Message variant="danger">{error}</Message>} */}
-      {loading && <Loader />}
       <Form onSubmit={submitHandler}>
         <Form.Group controlId="email">
           <Form.Label>Email Address</Form.Label>
