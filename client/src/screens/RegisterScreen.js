@@ -10,7 +10,8 @@ import { register } from "../actions/userActions";
 // import 'react-toastify/dist/ReactToastify.css';
 import toast, { Toaster } from 'react-hot-toast';
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
-
+import { GoogleLogin } from 'react-google-login';
+import { gapi } from 'gapi-script';
 const RegisterScreen = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -20,6 +21,7 @@ const RegisterScreen = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [message, setMessage] = useState(null);
   const [type, setType] = useState("password");
+  const [profile, setProfile] = useState([])
 
   const dispatch = useDispatch();
 
@@ -34,6 +36,28 @@ const RegisterScreen = () => {
       navigate(redirect);
     }
   }, [navigate, userInfo, redirect]);
+
+
+  //Google login
+
+  const clientId = '524025551718-sbdiaorikajo006ei9sciorp6lcm97vu.apps.googleusercontent.com';
+
+
+  useEffect(() => {
+    const initClient = () => {
+      gapi.client.init({
+        clientId: clientId,
+        scope: ''
+      });
+    };
+    gapi.load('client:auth2', initClient);
+  });
+  const onSuccess = (res) => {
+    setProfile(res.profileObj)
+  };
+  const onFailure = (err) => {
+    console.log('failed:', err);
+  };
   const handleToggle = () => {
     setType(type == "password" ? "text" : "password");
   };
@@ -63,7 +87,7 @@ const RegisterScreen = () => {
         <h5 style={{ color: "#DC3535" }}>Sign Up</h5>
         {message && <Message variant="danger">{message}</Message>}
         {error && <Message variant="danger">{error}</Message>}
-        {loading && <Loader />}
+        {/* {loading && <Loader />} */}
         <Form onSubmit={submitHandler}>
           <Form.Group controlId="name">
             <Form.Label>Name</Form.Label>
@@ -136,6 +160,18 @@ const RegisterScreen = () => {
             <Link style={{ color: "#DC3535" }} to={redirect ? `/login?redirect=${redirect}` : "/login"}>
               Login
             </Link>
+          </Col>
+        </Row>
+        <Row className="py-3">
+          <Col>
+            <GoogleLogin
+              clientId={clientId}
+              buttonText="Sign in with Google"
+              onSuccess={onSuccess}
+              onFailure={onFailure}
+              cookiePolicy={'single_host_origin'}
+              isSignedIn={true}
+            />
           </Col>
         </Row>
       </FormContainer>

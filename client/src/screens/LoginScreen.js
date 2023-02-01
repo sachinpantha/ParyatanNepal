@@ -27,7 +27,6 @@ const LoginScreen = () => {
       navigate(redirect);
     }
   }, [navigate, userInfo, redirect]);
-
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(login(email, password));

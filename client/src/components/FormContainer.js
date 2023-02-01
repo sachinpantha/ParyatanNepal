@@ -12,7 +12,7 @@ const FormContainer = ({ children, custom }) => {
     <Container className={custom && "custom-form-container"} data-aos="fade-right">
       <div className={custom && "custom-form"}>
         {custom && <>
-          <img className="form-logo" src={logo} />
+          {/* <img className="form-logo" src={logo} /> */}
           <span className="back" onClick={handleGoBack}>
             <AiFillHome />
           </span>

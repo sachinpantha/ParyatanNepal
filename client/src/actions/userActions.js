@@ -18,7 +18,6 @@ import {
   USER_LIST_SUCCESS,
   USER_LIST_FAIL,
 } from "../constants/userConstants";
-import { useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 import { ORDER_LIST_MY_RESET } from "../constants/orderConstants";
@@ -96,11 +95,7 @@ export const register = (name, email, password) => async (dispatch) => {
       type: USER_REGISTER_SUCCESS,
       payload: data,
     });
-    toast('User Registered Successfully!', {
-      type: 'success',
-      autoClose: 1500,
-      position: 'top-right'
-    })
+    toast('User Registered Successfully!')
 
     const userInfo = { ...data, isloggedIn: Boolean(data?.token) };
     dispatch({
