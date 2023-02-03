@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-d
 import { Container } from "react-bootstrap";
 import Footer from "./components/Footer";
 import HomeScreen from "./screens/HomeScreen";
-import { ToastContainer } from 'react-toastify';
+import { Toaster } from 'react-hot-toast';
 import ProductScreen from "./screens/ProductScreen.js";
 import ConnectScreen from "./screens/ConnectScreen.js";
 import LoginScreen from "./screens/LoginScreen.js";
@@ -37,7 +37,7 @@ const App = () => {
 
           <main className="py-3">
             <Container>
-              <ToastContainer></ToastContainer>
+              <Toaster></Toaster>
               <Routes>
                 <Route exact path="/" element={isloggedIn ? <HomeScreen /> : <LandingPage />} />
                 <Route path="/shipping" element={<ShippingScreen />} />

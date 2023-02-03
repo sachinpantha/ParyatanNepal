@@ -3,13 +3,14 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Form, Button, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Message from "../components/Message";
-import { Spinner } from 'react-bootstrap'
+import { Spinner } from "react-bootstrap";
 import Loader from "../components/Loader";
 import FormContainer from "../components/FormContainer";
-import { toast } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from "react-hot-toast";
+import "react-toastify/dist/ReactToastify.css";
 import { login } from "../actions/userActions";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
+import axios from "axios";
 const LoginScreen = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -31,25 +32,23 @@ const LoginScreen = () => {
     e.preventDefault();
     dispatch(login(email, password));
     if (email.length == 0) {
-      toast('Email field must not be empty!', {
-        type: 'warning',
+      toast("Email field must not be empty!", {
+        type: "warning",
         autoClose: 1500,
-        position: 'top-right'
-      })
-    }
-    else if (password.length == 0) {
-      toast('Password field must not be empty!', {
-        type: 'warning',
+        position: "top-right",
+      });
+    } else if (password.length == 0) {
+      toast("Password field must not be empty!", {
+        type: "warning",
         autoClose: 1500,
-        position: 'top-right'
-      })
-    }
-    else if (password.length < 8) {
-      toast('Password must be 8 characters long!', {
-        type: 'warning',
+        position: "top-right",
+      });
+    } else if (password.length < 8) {
+      toast("Password must be 8 characters long!", {
+        type: "warning",
         autoClose: 1500,
-        position: 'top-right'
-      })
+        position: "top-right",
+      });
     }
   };
   const handleToggle = () => {
@@ -87,7 +86,11 @@ const LoginScreen = () => {
           </div>
         </Form.Group>
 
-        <Button style={{ borderRadius: '5px', backgroundColor: '#CF0A0A' }} type="submit" variant="primary">
+        <Button
+          style={{ borderRadius: "5px", backgroundColor: "#CF0A0A" }}
+          type="submit"
+          variant="primary"
+        >
           Sign In
         </Button>
       </Form>
@@ -95,7 +98,10 @@ const LoginScreen = () => {
       <Row className="py-3">
         <Col>
           New Customer?{" "}
-          <Link style={{ color: "#DC3535" }} to={redirect ? `/register?redirect=${redirect}` : "/register"}>
+          <Link
+            style={{ color: "#DC3535" }}
+            to={redirect ? `/register?redirect=${redirect}` : "/register"}
+          >
             Register
           </Link>
         </Col>

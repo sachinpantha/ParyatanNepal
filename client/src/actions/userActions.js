@@ -18,7 +18,7 @@ import {
   USER_LIST_SUCCESS,
   USER_LIST_FAIL,
 } from "../constants/userConstants";
-import { toast } from 'react-toastify'
+import { toast } from 'react-hot-toast'
 import 'react-toastify/dist/ReactToastify.css';
 import { ORDER_LIST_MY_RESET } from "../constants/orderConstants";
 export const login = (email, password) => async (dispatch) => {
