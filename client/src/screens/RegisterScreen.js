@@ -65,12 +65,14 @@ const RegisterScreen = () => {
     e.preventDefault();
     if (password !== confirmPassword) {
       toast.error('Password does not match!', {
-        duration: 2000
+        duration: 2000,
+        position: "top-right"
       })
     }
     else if (password.length < 8) {
       toast.error('Password must be 8 characters long!', {
-        duration: 2000
+        duration: 2000,
+        position: "top-right"
       })
     }
     else {
@@ -81,8 +83,6 @@ const RegisterScreen = () => {
 
   return (
     <>
-      <Toaster
-        position="top-right" />
       <FormContainer custom>
         <h5 style={{ color: "#DC3535" }}>Sign Up</h5>
         {message && <Message variant="danger">{message}</Message>}

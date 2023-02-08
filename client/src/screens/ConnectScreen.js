@@ -3,14 +3,17 @@ import { Link, useParams, useLocation, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { Row, Col, ListGroup, Image, From, Button, Card, Toast } from 'react-bootstrap'
 import { toast } from 'react-toastify'
+
 import 'react-toastify/dist/ReactToastify.css';
+
 import Message from '../components/Message'
 import { connectToGuide, removeFromConnection } from '../actions/connectActions'
+
 const ConnectScreen = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const { id } = useParams();
-    const guideId = id
+    const guideId = id;
     // WITH THIS LOGIC OF REPLACING %20 I CAN REMOVE A TYPE OF SALTED ENCRYPTION FROM QUERY PARAMETERS
     const time = location.search ? location.search.split('=')[1].replaceAll('%20', ' ').split('GMT')[0] : 0
     const dispatch = useDispatch()
