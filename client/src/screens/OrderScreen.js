@@ -95,7 +95,7 @@ const OrderScreen = () => {
                 <Card className='shadow-sm p-3 bg-white rounded border-0'>
                     <ListGroup variant='flush'>
                         <ListGroup.Item>
-                            <h4 className='text-center' style={{ color: 'red' }}>Connection receipt</h4>
+                            <h2 className='text-center' style={{ color: 'red' }}>Connection </h2>
                         </ListGroup.Item>
                         <ListGroup.Item>
                             <Row>

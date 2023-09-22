@@ -1,0 +1,96 @@
+.hotel_title {
+  text-align: center;
+  padding: 3rem 0 2rem 0;
+}
+
+.hotels {
+  /* background-color: blue; */
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  overflow-y: hidden;
+  justify-content: center;
+}
+
+.hotelsComponent img {
+  height: 15rem;
+  width: 100%;
+  object-fit: cover;
+}
+
+.hotels > h3 {
+  text-transform: capitalize;
+}
+
+.hotelCompo {
+  height: 25rem;
+  width: 25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  border-radius: 0.3rem;
+  align-items: flex-start;
+}
+
+.hotelCompo > h4 {
+  font-size: 1rem;
+  text-transform: capitalize;
+  margin: 0.5rem 0 0 0;
+}
+
+.hotelCompo h6 {
+  color: rgba(0, 0, 0, 0.8);
+  text-transform: capitalize;
+  font-size: 0.7rem;
+  letter-spacing: 1px;
+}
+
+.hotelCompo > .inside_div span:nth-child(1) {
+  background-color: rgb(6, 6, 144);
+  border-top-left-radius: 50%;
+  border-bottom-right-radius: 50%;
+  padding: 0.3rem;
+  color: white;
+  font-size: 14px;
+}
+
+.hotelCompo > .inside_div span:nth-child(2) {
+  margin: 0 10px;
+  font-size: 14px;
+}
+
+.hotelCompo > .inside_div span:nth-child(3) {
+  font-size: 12px;
+}
+
+.hotelCompo img {
+  height: 14rem;
+  width: 100%;
+  object-fit: cover;
+}
+
+.buttons {
+  display: flex;
+  gap: 1rem;
+  flex-direction: start;
+}
+
+.buttons button {
+  border: none;
+  padding: 0.3rem 1rem;
+  background-color: rgb(34, 152, 34);
+  color: aliceblue;
+  border-radius: 0.2rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.buttons button svg {
+  font-size: 1rem !important;
+}
+
+.buttons button:nth-child(2) {
+  background-color: brown;
+}

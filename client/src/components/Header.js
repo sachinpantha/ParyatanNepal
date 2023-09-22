@@ -17,8 +17,8 @@ const Header = () => {
     navigate("/");
   };
   return (
-    <header>
-      <Navbar bg="danger" variant="dark" expand="lg" collapseOnSelect>
+    <header >
+      <Navbar className="custom-nav" bg="danger" variant="dark" expand="lg" collapseOnSelect>
         <Container>
           <LinkContainer to="/">
             <Image className="headLogo" src={Logo}></Image>

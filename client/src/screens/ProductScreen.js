@@ -26,7 +26,7 @@ const ProductScreen = () => {
     const connectHandler = () => {
         navigate(`/connect/${id}?time=${value}`)
     }
-    return <>
+    return <div className="container">
         <Link className='btn btn-dark my-3 rounded-pill' to='/'>
             <i className="fa-solid fa-arrow-left"></i>
         </Link>
@@ -108,7 +108,7 @@ const ProductScreen = () => {
                 </Col>
             </Row>}
 
-    </>
+    </div>
 
 }
 

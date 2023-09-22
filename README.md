@@ -1,32 +1,13 @@
+# Team name: MERN-Squad
 
-# Paryatan Nepal
+# details about Paryatan Nepal
 
-A Dynamic platform to hire Tourist guides for the adventure of different parts of the beautiful country Nepal. Built using MERN Stack
+Our idea "Paryatan Nepal" is a Dynamic Platform that will work as a SaaS(Software as a Service) product which will be used by tourists to find all their necessities along with trekking guides and many more in the beautiful country Nepal.
 
+# web based architecture
 
+![alt text](./workflow.png)
 
+# project showcase
 
-## Acknowledgements
-
- - This project has won National Level Hackathon organized by Lumbini Engineering College
-
-
-## Features
-
-- Ability to hire tourist guides in secure way.
-- Feature of Booking Local hotels and buying authentic items to be added soon.
-
-
-
-
-## Glimpses of Project
-
-![App Screenshot](https://res.cloudinary.com/dhis3cip7/image/upload/v1678079939/Screenshot_89_gw0pms.png)
-
-![App Screenshot](https://res.cloudinary.com/dhis3cip7/image/upload/v1678080070/sc1_szwqnd.jpg)
-
-![App Screenshot](https://res.cloudinary.com/dhis3cip7/image/upload/v1678080069/sc2_mbh8lx.jpg)
-
-![App Screenshot](https://res.cloudinary.com/dhis3cip7/image/upload/v1678080251/sc3_fyjzse.jpg)
-
-![App Screenshot](https://res.cloudinary.com/dhis3cip7/image/upload/v1678080251/sc4_xuojxk.jpg)
+![alt text](./picture.png)
