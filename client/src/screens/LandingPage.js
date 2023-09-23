@@ -59,9 +59,9 @@ const PageCompoenent = () => {
             options={{
               strings: [
                 "तपाईंको पर्यटकिय साथी",
-                "Travel smarter with Paryatan Nepal",
-                "Guiding destinations",
-                "An ecosystem for your vacations",
+                "Your gateway to heart of Nepal",
+                "Unfold Nepal's Wonders with Ease",
+                "Your Journey, Our Expertise",
               ],
               autoStart: true,
               loop: true,
@@ -116,7 +116,7 @@ const TopDestinations = () => {
     <section className="topdestinations">
       <div className="topdestinations__wrapper container">
         <h1 className="topdestinations__heading" data-aos="fade-up">
-          Top Destination To Travel with Sanghra Nepal
+          Top Destination To Travel with Sangraha Nepal
         </h1>
 
         <div className="topdestinations__main">
