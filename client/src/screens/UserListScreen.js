@@ -431,7 +431,7 @@ const UserListScreen = () => {
         dispatch(listUsers())
     }, [dispatch])
 
-    // Bubble Sort Algorithm
+    // Bubble Sort Algorithm to sort users
     const bubbleSort = (arr, key, order) => {
         const sortedArr = [...arr]
         let swapped
