@@ -11,6 +11,7 @@ const UserListScreen = () => {
     const [sortOrder, setSortOrder] = useState('asc')
     const [sortBy, setSortBy] = useState('name')
     const [searchTerm, setSearchTerm] = useState('')
+    const [sortTime, setSortTime] = useState(null)
 
     const dispatch = useDispatch()
 
@@ -28,25 +29,26 @@ const UserListScreen = () => {
         else {
             navigate("/");
         }
-    }, [dispatch])
+    }, [dispatch, navigate, userInfo])
 
-    // Bubble Sort Algorithm to sort users
-    const bubbleSort = (arr, key, order) => {
-        const sortedArr = [...arr]
-        let swapped
-        do {
-            swapped = false
-            for (let i = 0; i < sortedArr.length - 1; i++) {
-                if (
-                    (order === 'asc' && sortedArr[i][key].localeCompare(sortedArr[i + 1][key]) > 0) ||
-                    (order === 'desc' && sortedArr[i][key].localeCompare(sortedArr[i + 1][key]) < 0)
-                ) {
-                    [sortedArr[i], sortedArr[i + 1]] = [sortedArr[i + 1], sortedArr[i]]
-                    swapped = true
-                }
+    // Quick Sort Algorithm to sort users
+    const quickSort = (arr, key, order) => {
+        if (arr.length <= 1) return arr
+        const pivot = arr[arr.length - 1]
+        const left = []
+        const right = []
+
+        for (let i = 0; i < arr.length - 1; i++) {
+            const comparison = order === 'asc'
+                ? arr[i][key].localeCompare(pivot[key])
+                : pivot[key].localeCompare(arr[i][key])
+            if (comparison < 0) {
+                left.push(arr[i])
+            } else {
+                right.push(arr[i])
             }
-        } while (swapped)
-        return sortedArr
+        }
+        return [...quickSort(left, key, order), pivot, ...quickSort(right, key, order)]
     }
 
     // Sorting and Filtering with useMemo for optimization
@@ -57,7 +59,11 @@ const UserListScreen = () => {
             user.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
             user._id.includes(searchTerm)
         )
-        return bubbleSort(filtered, sortBy, sortOrder)
+        const startTime = performance.now()
+        const sortedUsers = quickSort(filtered, sortBy, sortOrder)
+        const endTime = performance.now()
+        setSortTime((endTime - startTime) / 1000) // Time in seconds
+        return sortedUsers
     }, [users, sortOrder, sortBy, searchTerm])
 
     // Calculate the total number of users and admins
@@ -122,67 +128,75 @@ const UserListScreen = () => {
             ) : error ? (
                 <Message variant="danger">{error}</Message>
             ) : (
-                <Table striped bordered hover responsive className="table-sm">
-                    <thead className="table-dark">
-                        <tr>
-                            <th>ID</th>
-                            <th>NAME</th>
-                            <th>EMAIL</th>
-                            <th>ADMIN</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {filteredUsers.map((user) => (
-                            <tr key={user._id}>
-                                <td>{user._id}</td>
-                                <td>{user.name}</td>
-                                <td>
-                                    <a href={`mailto:${user.email}`}>
-                                        {user.email}
-                                    </a>
-                                </td>
-                                <td>
-                                    {user.isAdmin ? (
-                                        <i
-                                            className="fas fa-check"
-                                            style={{ color: 'green' }}
-                                        ></i>
-                                    ) : (
-                                        <i
-                                            className="fa fa-times"
-                                            style={{ color: 'red' }}
-                                        ></i>
-                                    )}
-                                </td>
-                                <td>
-                                    <div className="d-flex gap-2">
-                                        <LinkContainer to={`/user/${user._id}/edit`}>
-                                            <Button
-                                                variant="light"
-                                                className="btn-sm"
-                                            >
-                                                <i className="fas fa-edit"></i>
-                                            </Button>
-                                        </LinkContainer>
-                                        <Button
-                                            variant="danger"
-                                            className="btn-sm"
-                                            onClick={() => {
-                                                deleteHandler(user._id)
-                                            }}
-                                        >
-                                            <i className="fas fa-trash"></i>
-                                        </Button>
-                                    </div>
-                                </td>
+                <>
+                    <Table striped bordered hover responsive className="table-sm">
+                        <thead className="table-dark">
+                            <tr>
+                                <th>ID</th>
+                                <th>NAME</th>
+                                <th>EMAIL</th>
+                                <th>ADMIN</th>
+                                <th></th>
                             </tr>
-                        ))}
-                    </tbody>
-                </Table>
+                        </thead>
+                        <tbody>
+                            {filteredUsers.map((user) => (
+                                <tr key={user._id}>
+                                    <td>{user._id}</td>
+                                    <td>{user.name}</td>
+                                    <td>
+                                        <a href={`mailto:${user.email}`}>
+                                            {user.email}
+                                        </a>
+                                    </td>
+                                    <td>
+                                        {user.isAdmin ? (
+                                            <i
+                                                className="fas fa-check"
+                                                style={{ color: 'green' }}
+                                            ></i>
+                                        ) : (
+                                            <i
+                                                className="fa fa-times"
+                                                style={{ color: 'red' }}
+                                            ></i>
+                                        )}
+                                    </td>
+                                    <td>
+                                        <div className="d-flex gap-2">
+                                            <LinkContainer to={`/user/${user._id}/edit`}>
+                                                <Button
+                                                    variant="light"
+                                                    className="btn-sm"
+                                                >
+                                                    <i className="fas fa-edit"></i>
+                                                </Button>
+                                            </LinkContainer>
+                                            <Button
+                                                variant="danger"
+                                                className="btn-sm"
+                                                onClick={() => {
+                                                    deleteHandler(user._id)
+                                                }}
+                                            >
+                                                <i className="fas fa-trash"></i>
+                                            </Button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </Table>
+                    {sortTime !== null && (
+                        <div className="my-3">
+                            <h5>Time Taken for Sorting: {sortTime.toFixed(6)} seconds</h5>
+                        </div>
+                    )}
+                </>
             )}
         </>
     )
 }
 
 export default UserListScreen
+

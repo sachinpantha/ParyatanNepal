@@ -18,7 +18,7 @@ const Product = ({ product }) => {
                                 product.name
                             }
                             {" "}
-                            <MdVerified data-toggle="tooltip" data-placement="right" title="Paryatan Nepal Certified Guide" style={{ color: '#4169e1' }} />
+                            <MdVerified data-toggle="tooltip" data-placement="right" title="Nepwonders Certified Guide" style={{ color: '#4169e1' }} />
                         </strong>
                     </Card.Title>
                     <Card.Text as='div'>

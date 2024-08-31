@@ -19,9 +19,16 @@ import {
   USER_LIST_FAIL,
   USER_LIST_RESET
 } from "../constants/userConstants";
-import { toast } from 'react-hot-toast'
+import { toast } from 'react-hot-toast';
 import 'react-toastify/dist/ReactToastify.css';
 import { ORDER_LIST_MY_RESET } from "../constants/orderConstants";
+
+// Utility function to get user info from localStorage
+const getUserInfoFromLocalStorage = () => {
+  const userInfo = localStorage.getItem("userInfo");
+  return userInfo ? JSON.parse(userInfo) : {};
+};
+
 export const login = (email, password) => async (dispatch) => {
   try {
     dispatch({
@@ -39,15 +46,15 @@ export const login = (email, password) => async (dispatch) => {
       { email, password },
       config
     );
+
     const userInfo = { ...data, isloggedIn: Boolean(data?.token) };
     dispatch({
       type: USER_LOGIN_SUCCESS,
       payload: userInfo,
     });
-    toast('Login Successful!', {
-      type: 'success',
+    toast.success('Login Successful!', {
       autoClose: 1500,
-    })
+    });
 
     localStorage.setItem("userInfo", JSON.stringify(userInfo));
   } catch (error) {
@@ -58,11 +65,10 @@ export const login = (email, password) => async (dispatch) => {
           ? error.response.data.message
           : error.message,
     });
-    toast('User Does not exist!', {
-      type: 'error',
+    toast.error('Incorrect details!', {
       autoClose: 1500,
       position: 'top-right'
-    })
+    });
   }
 };
 
@@ -92,17 +98,16 @@ export const register = (name, email, password) => async (dispatch) => {
       config
     );
 
+    const userInfo = { ...data, isloggedIn: Boolean(data?.token) };
     dispatch({
       type: USER_REGISTER_SUCCESS,
       payload: data,
     });
-    toast.success('User Registered Successfully!')
-
-    const userInfo = { ...data, isloggedIn: Boolean(data?.token) };
     dispatch({
       type: USER_LOGIN_SUCCESS,
       payload: userInfo,
     });
+    toast.success('User Registered Successfully!');
 
     localStorage.setItem("userInfo", JSON.stringify(userInfo));
   } catch (error) {
@@ -172,15 +177,16 @@ export const updateUserProfile = (user) => async (dispatch, getState) => {
 
     const { data } = await axios.put(`/api/users/profile`, user, config);
 
+    const updatedUserInfo = { ...userInfo, ...data };
     dispatch({
       type: USER_UPDATE_PROFILE_SUCCESS,
       payload: data,
     });
     dispatch({
       type: USER_LOGIN_SUCCESS,
-      payload: data,
+      payload: updatedUserInfo,
     });
-    localStorage.setItem("userInfo", JSON.stringify(data));
+    localStorage.setItem("userInfo", JSON.stringify(updatedUserInfo));
   } catch (error) {
     const message =
       error.response && error.response.data.message
@@ -218,11 +224,6 @@ export const listUsers = () => async (dispatch, getState) => {
       type: USER_LIST_SUCCESS,
       payload: data,
     });
-    dispatch({
-      type: USER_LOGIN_SUCCESS,
-      payload: data,
-    });
-    localStorage.setItem("userInfo", JSON.stringify(data));
   } catch (error) {
     const message =
       error.response && error.response.data.message

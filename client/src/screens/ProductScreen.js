@@ -40,7 +40,7 @@ const ProductScreen = () => {
                         <ListGroup.Item>
                             <h5 className='text-center'>{product.name}
                                 {" "}
-                                <MdVerified data-toggle="tooltip" data-placement="right" title="Paryatan Nepal Certified Guide" style={{ color: '#4169e1', cursor: 'pointer' }} />
+                                <MdVerified data-toggle="tooltip" data-placement="right" title="Nepwonders Certified Guide" style={{ color: '#4169e1', cursor: 'pointer' }} />
                             </h5>
                         </ListGroup.Item>
                         <ListGroup.Item>
