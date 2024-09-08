@@ -4,7 +4,7 @@ import { Table, Button, Form } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
-import { listUsers } from '../actions/userActions'
+import { listUsers, deleteUser } from '../actions/userActions'
 import { useNavigate } from "react-router-dom";
 
 const UserListScreen = () => {
@@ -20,6 +20,10 @@ const UserListScreen = () => {
 
     const userLogin = useSelector((state) => state.userLogin)
     const { userInfo } = userLogin
+
+    const userDelete = useSelector((state) => state.userDelete)
+    const { success: successDelete } = userDelete
+
     let navigate = useNavigate();
 
     useEffect(() => {
@@ -29,7 +33,7 @@ const UserListScreen = () => {
         else {
             navigate("/");
         }
-    }, [dispatch, navigate, userInfo])
+    }, [dispatch, navigate, userInfo, successDelete])
 
     // Quick Sort Algorithm to sort users
     const quickSort = (arr, key, order) => {
@@ -51,14 +55,56 @@ const UserListScreen = () => {
         return [...quickSort(left, key, order), pivot, ...quickSort(right, key, order)]
     }
 
+    // Binary Search Algorithm to find users
+    const binarySearch = (arr, key, searchValue) => {
+        let left = 0
+        let right = arr.length - 1
+
+        while (left <= right) {
+            const mid = Math.floor((left + right) / 2)
+            const midValue = arr[mid][key].toLowerCase()
+
+            if (midValue === searchValue.toLowerCase()) {
+                return [arr[mid]] // Return an array with the found user
+            }
+            if (midValue < searchValue.toLowerCase()) {
+                left = mid + 1
+            } else {
+                right = mid - 1
+            }
+        }
+
+        return [] // If not found, return an empty array
+    }
+
     // Sorting and Filtering with useMemo for optimization
     const filteredUsers = useMemo(() => {
         if (!users) return []
-        const filtered = users.filter(user =>
-            user.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            user.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            user._id.includes(searchTerm)
-        )
+        let filtered = users
+
+        if (searchTerm) {
+            // Sort first before performing binary search
+            const sorted = quickSort(users, sortBy, sortOrder)
+
+            // Apply binary search on sorted list
+            filtered = binarySearch(sorted, sortBy, searchTerm)
+
+            if (filtered.length === 0) {
+                filtered = users.filter(user =>
+                    user.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                    user.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                    user._id.includes(searchTerm)
+                )
+            }
+        } else {
+            // Apply normal filtering and sorting when no search term is entered
+            filtered = users.filter(user =>
+                user.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                user.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                user._id.includes(searchTerm)
+            )
+        }
+
         const startTime = performance.now()
         const sortedUsers = quickSort(filtered, sortBy, sortOrder)
         const endTime = performance.now()
@@ -71,7 +117,10 @@ const UserListScreen = () => {
     const totalAdmins = filteredUsers.filter(user => user.isAdmin).length
 
     const deleteHandler = (id) => {
-        console.log('delete')
+        if (window.confirm('Are you sure?')) {
+
+            dispatch(deleteUser(id))
+        }
     }
 
     return (
@@ -199,4 +248,3 @@ const UserListScreen = () => {
 }
 
 export default UserListScreen
-

@@ -31,7 +31,7 @@ function LandingPage() {
             options={{
               strings: [
                 "तपाईंको पर्यटकिय साथी",
-                "Travel smarter with Paryatan Nepal",
+                "Travel smarter with Nepwonders",
                 "Guiding destinations",
                 "An ecosystem for your vacations",
               ],
