@@ -15,6 +15,7 @@ import PaymentScreen from "./screens/PaymentScreen.js";
 import PlaceOrderScreen from "./screens/PlaceOrderScreen.js";
 import OrderScreen from "./screens/OrderScreen.js";
 import UserListScreen from "./screens/UserListScreen.js";
+import UserEditScreen from "./screens/UserEditScreen.js";
 import LandingPage from "./screens/LandingPage";
 import Aos from "aos";
 import "aos/dist/aos.css";
@@ -51,6 +52,7 @@ const App = () => {
                 <Route path="/connect" element={<ConnectScreen />} />
                 <Route path="/connect/:id" element={<ConnectScreen />} />
                 <Route path="/admin/userlist" element={<UserListScreen />} />
+                <Route path="/admin/user/:id/edit" element={<UserEditScreen />} />
               </Routes>
             </Container>
           </main>
